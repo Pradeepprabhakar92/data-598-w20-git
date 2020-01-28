@@ -3,17 +3,24 @@ title: "My Rmd document"
 author: "Pradeep Prabhakar"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: bookdown::html_document2
+bibliography: barba2018.bib
+
 ---
 
-Here is some inline code `r 1 + 1`
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+We are using the Starwars dataset, which has `r dim(starwars)[1]` rows and `r dim(starwars)[2]` columns.
+
 
 ```{r, starwars-plot,fig.cap = "A ggplot of starwars stuff"}
-library(tidyverse)
 starwars %>%
   filter(species == "Human")%>% ggplot()+aes(x=height,y=mass)+geom_point()
 ```
 
-We can see in Figure \@ref(fig:starwars-plot)...
+We can see in Figure \@ref(fig:starwars-plot) a linear relationship between the height and mass of the starwars characters.
+
 
 ```{r starwars-tbl}
 starwars%>%
@@ -23,4 +30,18 @@ starwars%>%
 
 ```
 
-We can see in Table \@ref(tab:starwars-tbl)...
+We can see the height, mass and home world of various starwars characters in Table \@ref(tab:starwars-tbl)
+
+
+```{r, starwars-img, fig.cap = "Star wars IV cover"}
+knitr::include_graphics("https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SY1000_CR0,0,643,1000_AL_.jpg")
+
+```
+
+The classic poster for the Star wars: Episode IV movie as seen above in Figure \@ref(fig:starwars-img)
+
+
+[@barba2018terminologies] in the article "Terminologies for reproducible research" attempts to inventory the contradictory definitions for reproducibility vs replicability across various disciplines
+
+## References cited
+
